@@ -7,6 +7,7 @@ import com.exam.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	User findByUsername(String username);
+	User getByUser(String username);
 	
 	
 
