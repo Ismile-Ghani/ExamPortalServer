@@ -4,7 +4,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.exam.model.User;
 import com.exam.model.UserRole;
 import com.exam.repository.RoleRepository;
@@ -22,6 +21,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+		
+		System.out.println("In Service Impl class");
 		
 		User local = this.userrepo.findByUsername(user.getUsername());
 		if(local != null)
@@ -42,8 +43,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	
 	public User getUser(String username) {
-		return this.userrepo.getByUser(username);
+		return this.userrepo.findByUsername(username);
+	}
+
+	@Override
+	public String deleteUser(String username) {
+		
+		this.userrepo.deleteByUsername(username);
+		return "User with username" + username + "has been deleted";
 	}
 	
 	
