@@ -146,7 +146,7 @@ public class User implements UserDetails{
 		this.userRole.forEach(userRoles->{
 			set.add(new Authority(userRoles.getRole().getRoleName()));
 		});
-		return null;
+		return set;
 	}
 
 	@Override
